@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> {% load static %}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+    <title>My Cart</title>
+</head>
+
+<body>
+    <div id="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+            <div class="container-md">
+                <h1> <a class="navbar-brand" href="#" id="nav">My Chart</a></h1>
+                <a class="previous" href="/home/">Previous page</a>
+
+            </div>
+        </nav>
+
+
+
+
+        <div class="table">
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Amount</th>
+
+                        <th scope="col">Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for i in cart%}
+                    <tr>
+                        <th scope="row">{{i.id}}</th>
+                        <td>{{i.item.name}}</td>
+                        <td>{{i.item.price}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td><a class="delete" href="/delete/{{i.item.id}}/">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            <a href="/submit_order" class="btn btn-secondary" title="Click to confirm Order">Check Now</a>
+            <div class="total">
+
+
+                <div class="total">
+                    <p>Total: {{total}}</p>
+                </div>
+                <button class="open-button" id="btn" onclick="openForm()">Any Feedback ?</button>
+
+                <div class="chat-popup" id="myForm">
+                    <form action="/sendfeedback/" method="POST" class="form-container">
+                        {%csrf_token%}
+                        <h4>Write your feedback here:</h4>
+
+                        <textarea placeholder="Type Feedback.." name="description" required></textarea>
+
+                        <button type="submit" class="btn">Send</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    </form>
+                </div>
+            </div>
+
+            <script>
+                function openForm() {
+                    document.getElementById("myForm").style.display = "block";
+                }
+
+                function closeForm() {
+                    document.getElementById("myForm").style.display = "none";
+                }
+            </script>
+</body>
+
+</html>

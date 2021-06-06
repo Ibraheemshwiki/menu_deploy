@@ -1,0 +1,47 @@
+
+
+.container {
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+
+.img-fluid {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 5px;
+}
+
+#counter {
+    width: 100px;
+    height: 45px;
+    transform: translateY(4px);
+    margin-top: -20px;
+}
+
+.tag {
+    display: inline-block;
+    width: 89px;
+    height: 30px;
+    padding-top: 2px;
+    background-color: #983418;
+    -webkit-border-radius: 3px 4px 4px 3px;
+    -moz-border-radius: 3px 4px 4px 3px;
+    border-radius: 3px 4px 4px 3px;
+    border-left: 1px solid #983418;
+}
+a {
+    margin-right: 900px;
+    
+    color: white;
+    border-radius: 2px;
+    border: solid, black;
+}
+.previous{
+    color: white;
+}
+button{
+    margin-bottom: -10px;
+}
